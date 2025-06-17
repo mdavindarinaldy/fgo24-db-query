@@ -30,6 +30,9 @@ SELECT * FROM (SELECT year, count(*) AS movie_count FROM movies
 GROUP BY year) WHERE movie_count=12056;
 
 -- 10. mendapatkan movies dengan genres yang dibuatkan menjadi 1 column (value dipisahkan dengan comma) dengan menggunakan string_agg
+SELECT m.name as movie_name, string_agg (mg.genre, ', ') AS genre_list FROM movies m
+JOIN movies_genres mg ON mg.movie_id = m.id
+GROUP BY m.name;
 
 
 
